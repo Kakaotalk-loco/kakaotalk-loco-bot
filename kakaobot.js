@@ -1655,9 +1655,9 @@ class Bot {
                 // userPerms(channel, userid, perm)
                 if (data.text.startsWith(prefix + "권한")) {
                     if (adminList.includes(id + '')) {
+                        var wut = data.text.replace(prefix + "권한 ", "");
                         try {
-                            if (data.originalType == $KnownChatType.REPLY) {
-                                var wut = data.text.replace(prefix + "권한 ", "");
+                            if (data.originalType == $KnownChatType.REPLY) { 
                                 var botInfo = channel.getUserInfo(CLIENT.clientUser);
                                 const reply = data.attachment();
                                 if (reply.src_logId !== undefined) {
