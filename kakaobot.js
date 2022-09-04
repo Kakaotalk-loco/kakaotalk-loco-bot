@@ -3161,7 +3161,7 @@ class Bot {
                 };
 
                 if (data.text == prefix + "자동등록") {
-                    if (id == 366140165 || id == 36509958 || id == 365926251) {
+                    if (id == 305751063 || id == 83746916922909719 || id == 48159837962986520) {
                         if (adminList.includes(id + '')) {
                             channel.sendChat(
                                 new $ChatBuilder()
