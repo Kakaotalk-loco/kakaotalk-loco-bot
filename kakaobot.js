@@ -1657,7 +1657,7 @@ class Bot {
                     if (adminList.includes(id + '')) {
                         try {
                             if (data.originalType == $KnownChatType.REPLY) {
-                                var wut = data.text.replace(prefix + "권한 ", "");
+                                var wut = data.text.replace(prefix + "권한", "");
                                 var botInfo = channel.getUserInfo(CLIENT.clientUser);
                                 const reply = data.attachment();
                                 if (reply.src_logId !== undefined) {
