@@ -1711,27 +1711,27 @@ class Bot {
                 }
 
                 if (data.text.includes(prefix + "ko-tts")) { // 한국어
-                    await ttsCommand(channel, data.chat.replace(prefix + "ko-tts", ""), 'ko');
+                    await ttsCommand(channel, data.text.replace(prefix + "ko-tts", ""), 'ko');
                 }
 
                 if (data.text.includes(prefix + "en-tts")) { // 영어
-                    await ttsCommand(channel, data.chat.replace(prefix + "en-tts", ""), 'en');
+                    await ttsCommand(channel, data.text.replace(prefix + "en-tts", ""), 'en');
                 }
 
                 if (data.text.includes(prefix + "de-tts")) { // 독어
-                    await ttsCommand(channel, data.chat.replace(prefix + "de-tts", ""), 'de');
+                    await ttsCommand(channel, data.text.replace(prefix + "de-tts", ""), 'de');
                 }
 
                 if (data.text.includes(prefix + "jp-tts")) { // 일본어
-                    await ttsCommand(channel, data.chat.replace(prefix + "jp-tts", ""), 'ja');
+                    await ttsCommand(channel, data.text.replace(prefix + "jp-tts", ""), 'ja');
                 }
 
                 if (data.text.includes(prefix + "zh-tts")) { // 중국어
-                    await ttsCommand(channel, data.chat.replace(prefix + "zh-tts", ""), 'zh');
+                    await ttsCommand(channel, data.text.replace(prefix + "zh-tts", ""), 'zh');
                 }
 
                 if (data.text.includes(prefix + "ru-tts")) { // 노어
-                    await ttsCommand(channel, data.chat.replace(prefix + "ru-tts", ""), 'ru');
+                    await ttsCommand(channel, data.text.replace(prefix + "ru-tts", ""), 'ru');
                 }
 
                 //channel.sendChat(JSON.stringify(data.getSenderInfo(channel)));
