@@ -1624,7 +1624,7 @@ class Bot {
                     console.log(m3); // 서울
                     console.log(m4); // 구로
                     console.log(m5); // 2
-                    if (m0.length > 3 ||m22.length > 2 || m5.length > 2) {
+                    if (m0.length > 3 || m5.length > 2) {
                         channel.sendChat("출발지와 행선지는 3글자, 열차 상태는 2글자를 넘길수 없습니다.");
                     } else {
                         var LEDdata = await LED(m0, m3, m11, m4, m22, m5);
