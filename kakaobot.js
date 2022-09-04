@@ -1653,6 +1653,8 @@ class Bot {
                         }
                         
                         //console.log(upload);
+                    } else {
+                        channel.sendChat("올바르지 않은 입력 형식입니다.");
                     }
                 }
                 // userPerms(channel, userid, perm)
