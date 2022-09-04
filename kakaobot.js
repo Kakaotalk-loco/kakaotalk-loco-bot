@@ -5679,7 +5679,7 @@ async function ttsCommand(_kakaoChannel, text, langCode) {
         return;
     }
     var data = Buffer.from(await googleTTS.getAudioBase64(text, { langCode }), 'base64');
-    var res = await $AttachmentApi.upload($KnownChatType.FILE, 'tts.mp3', data);
+    var res = await node_kakao.AttachmentApi.upload($KnownChatType.FILE, 'tts.mp3', data);
     if (!res.success) {
         _kakaoChannel.sendChat(`업로드중 오류가 발생했습니다. status: ${res.status}`);
     }
