@@ -1702,12 +1702,12 @@ class Bot {
                     channel.sendChat("[ tts 도움말 ]\n" + "\u200b".repeat(500) + 
                         "\n" +
                         "tts 사용법\n\n" +
-                        prefix + "ko-tts <할것>" +
-                        prefix + "en-tts <할것>" +
-                        prefix + "de-tts <할것>" +
-                        prefix + "jp-tts <할것>" +
-                        prefix + "zh-tts <할것>" +
-                        prefix + "ru-tts <할것>");
+                        prefix + "ko-tts <할것>\n" +
+                        prefix + "en-tts <할것>\n" +
+                        prefix + "de-tts <할것>\n" +
+                        prefix + "jp-tts <할것>\n" +
+                        prefix + "zh-tts <할것>\n" +
+                        prefix + "ru-tts <할것>\n");
                 }
 
                 if (data.text.includes(prefix + "ko-tts")) { // 한국어
