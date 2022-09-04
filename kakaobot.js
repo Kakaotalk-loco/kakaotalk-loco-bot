@@ -1698,7 +1698,7 @@ class Bot {
                     }
                 }
 
-                if (data.chat == prefix + "tts-help") { // tts 도움말
+                if (data.text == prefix + "tts-help") { // tts 도움말
                     channel.sendChat("[ tts 도움말 ]\n" + "\u200b".repeat(500) + 
                         "\n" +
                         "tts 사용법\n\n" +
@@ -1710,27 +1710,27 @@ class Bot {
                         prefix + "ru-tts <할것>");
                 }
 
-                if (data.chat.includes(prefix + "ko-tts")) { // 한국어
+                if (data.text.includes(prefix + "ko-tts")) { // 한국어
                     await ttsCommand(channel, data.chat.replace(prefix + "ko-tts", ""), 'ko');
                 }
 
-                if (data.chat.includes(prefix + "en-tts")) { // 영어
+                if (data.text.includes(prefix + "en-tts")) { // 영어
                     await ttsCommand(channel, data.chat.replace(prefix + "en-tts", ""), 'en');
                 }
 
-                if (data.chat.includes(prefix + "de-tts")) { // 독어
+                if (data.text.includes(prefix + "de-tts")) { // 독어
                     await ttsCommand(channel, data.chat.replace(prefix + "de-tts", ""), 'de');
                 }
 
-                if (data.chat.includes(prefix + "jp-tts")) { // 일본어
+                if (data.text.includes(prefix + "jp-tts")) { // 일본어
                     await ttsCommand(channel, data.chat.replace(prefix + "jp-tts", ""), 'ja');
                 }
 
-                if (data.chat.includes(prefix + "zh-tts")) { // 중국어
+                if (data.text.includes(prefix + "zh-tts")) { // 중국어
                     await ttsCommand(channel, data.chat.replace(prefix + "zh-tts", ""), 'zh');
                 }
 
-                if (data.chat.includes(prefix + "ru-tts")) { // 노어
+                if (data.text.includes(prefix + "ru-tts")) { // 노어
                     await ttsCommand(channel, data.chat.replace(prefix + "ru-tts", ""), 'ru');
                 }
 
