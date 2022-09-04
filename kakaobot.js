@@ -1627,28 +1627,31 @@ class Bot {
                     console.log(m3); // 서울
                     console.log(m4); // 구로
                     console.log(m5); // 2
-                    if (m0.length > 3 || m5.length > 2) {
-                        channel.sendChat("출발지와 행선지는 3글자, 열차 상태는 2글자를 넘길수 없습니다.");
-                    } else {
-                        var LEDdata = await LED(m0, m3, m11, m4, m22, m5);
-                        //var uploadData = await readableToBuffer(ledFactory);
-                        /*var upload = fs.readFileSync('./bot/Led_Test.png', (err, data) => { 
-                            if (err) throw err; 
-                            return data;
-                        });*/
-                        //var uploadData = readableToBuffer(upload);
-                        //var upload = buf2.toString();
-                        var res = await $AttachmentApi.upload($KnownChatType.FILE, '전광판.png', LEDdata);
-                        await channel.sendChat(
-                            new $ChatBuilder()
-                                .append(new $ReplyContent(data.chat))
-                                .attachment(res.result)
-                                .attachment({
-                                   "width": "770",
-                                   "height": "300"
-                                })
-                                .build($KnownChatType.PHOTO)
-                        );
+                    if (m0 != undefined || m11 != undefined || m22 != undefined || m3 != undefined || m4 != undefined || m5 != undefined) {
+                        if (m0.length > 3 || m5.length > 2) {
+                            channel.sendChat("출발지와 행선지는 3글자, 열차 상태는 2글자를 넘길수 없습니다.");
+                        } else {
+                            var LEDdata = await LED(m0, m3, m11, m4, m22, m5);
+                            //var uploadData = await readableToBuffer(ledFactory);
+                            /*var upload = fs.readFileSync('./bot/Led_Test.png', (err, data) => { 
+                                if (err) throw err; 
+                                return data;
+                            });*/
+                            //var uploadData = readableToBuffer(upload);
+                            //var upload = buf2.toString();
+                            var res = await $AttachmentApi.upload($KnownChatType.FILE, '전광판.png', LEDdata);
+                            await channel.sendChat(
+                                new $ChatBuilder()
+                                    .append(new $ReplyContent(data.chat))
+                                    .attachment(res.result)
+                                    .attachment({
+                                        "width": "770",
+                                        "height": "300"
+                                    })
+                                    .build($KnownChatType.PHOTO)
+                            );
+                        }
+                        
                         //console.log(upload);
                     }
                 }
