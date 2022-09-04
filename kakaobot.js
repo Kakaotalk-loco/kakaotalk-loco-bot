@@ -1669,17 +1669,19 @@ class Bot {
                                             case 2: // 평민
                                                 if (botInfo.perm != 4 && botInfo.perm != 1) {
                                                     channel.sendChat("권한이 부족합니다.");
+                                                    break;
                                                 } else {
                                                     userPerms(channel, reply.src_userId, 2);
+                                                    break;
                                                 }
-                                                break;
                                             case 4: // 부방
                                                 if (botInfo.perm != 1) {
                                                     channel.sendChat("봇의 권한이 부족합니다.");
+                                                    break;
                                                 } else {
                                                     userPerms(channel, reply.src_userId, 4);
+                                                    break;
                                                 }
-                                                break;
                                             case 8: // 봇
                                                 channel.sendChat("봇을 봇으로 지정할수는 있지만 지정하기 싫습니다.");
                                                 break;
