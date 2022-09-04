@@ -38,6 +38,7 @@ const { channel } = require('diagnostics_channel');
 const { date } = require('is_js');
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
 const axios = require('axios');
+const googleTTS = require('google-tts-api');
 let getInfo;
 try {
     getInfo = fs.readFileSync('./info.json', 'utf8');
@@ -146,7 +147,7 @@ class Bot {
         let Hider = ["12345678"];
         let bit;
         let boomChannel;
-        let logMessage = true;
+        let logMessage = false; // true;
         let terrorSpam = false;
         let mentionSpam = false;
         let runningSpam = false;
@@ -178,7 +179,7 @@ class Bot {
         let keyWordDescrip = "설정된 키워드 없음";
         var weatherurl;
         var topAdminMode = false;
-        var topAdmin = 83746916922909719;
+        var topAdmin = [83746916922909719, 305751063];
         let verifyList = [];
         let $ChatLog = {};
         let $DefChatLog = {};
@@ -211,7 +212,9 @@ class Bot {
                         };
                     };
                 }, 60000);
-            };
+            } else if (openVerify == "no") {
+                channel.sendChat(`[입장] ${user.nickname} (${user.userId}) 님이 채팅방에 입장하였습니다.`);
+            }
         });
 
         CLIENT.on('chat_read', (chat, channel, reader) => {
@@ -1635,7 +1638,7 @@ class Bot {
                         });*/
                         //var uploadData = readableToBuffer(upload);
                         //var upload = buf2.toString();
-                        var res = await $AttachmentApi.upload($KnownChatType.PHOTO, '전광판.png', LEDdata);
+                        var res = await $AttachmentApi.upload($KnownChatType.FILE, '전광판.png', LEDdata);
                         await channel.sendChat(
                             new $ChatBuilder()
                                 .append(new $ReplyContent(data.chat))
@@ -1648,6 +1651,87 @@ class Bot {
                         );
                         //console.log(upload);
                     }
+                }
+                // userPerms(channel, userid, perm)
+                if (data.text.startsWith(prefix + "권한")) {
+                    if (adminList.includes(id + '')) {
+                        try {
+                            if (data.originalType == $KnownChatType.REPLY) {
+                                var wut = data.text.replace(prefix + "권한 ", "");
+                                var botInfo = channel.getUserInfo(CLIENT.clientUser);
+                                const reply = data.attachment();
+                                if (reply.src_logId !== undefined) {
+                                    if (reply.src_type !== undefined) {
+                                        switch (wut) {
+                                            case 1: // 방장
+                                                channel.sendChat("허용되지 않은 권한입니다.");
+                                                break;
+                                            case 2: // 평민
+                                                if (botInfo.perm != 4 && botInfo.perm != 1) {
+                                                    channel.sendChat("권한이 부족합니다.");
+                                                } else {
+                                                    userPerms(channel, reply.src_userId, 2);
+                                                }
+                                                break;
+                                            case 4: // 부방
+                                                if (botInfo.perm != 1) {
+                                                    channel.sendChat("봇의 권한이 부족합니다.");
+                                                } else {
+                                                    userPerms(channel, reply.src_userId, 4);
+                                                }
+                                                break;
+                                            case 8: // 봇
+                                                channel.sendChat("봇을 봇으로 지정할수는 있지만 지정하기 싫습니다.");
+                                                break;
+                                            default: //ㅁ?ㄹ
+                                                channel.sendChat("올바른 권한을 입력해주세요.\n2 -> 평민\n4 -> 부방");
+                                                break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                channel.sendChat("권한 상승을 원하는 유저의 메시지에 답장 형식으로 명령어를 사용하십시오.")
+                            }
+                        } catch (err) {
+                            channel.sendChat("오류가 발생했습니다.\n" + err);
+                        }
+                    }
+                }
+
+                if (data.chat == prefix + "tts-help") { // tts 도움말
+                    channel.sendChat("[ tts 도움말 ]\n" + "\u200b".repeat(500) + 
+                        "\n" +
+                        "tts 사용법\n\n" +
+                        prefix + "ko-tts <할것>" +
+                        prefix + "en-tts <할것>" +
+                        prefix + "de-tts <할것>" +
+                        prefix + "jp-tts <할것>" +
+                        prefix + "zh-tts <할것>" +
+                        prefix + "ru-tts <할것>");
+                }
+
+                if (data.chat.includes(prefix + "ko-tts")) { // 한국어
+                    await ttsCommand(channel, data.chat.replace(prefix + "ko-tts", ""), 'ko');
+                }
+
+                if (data.chat.includes(prefix + "en-tts")) { // 영어
+                    await ttsCommand(channel, data.chat.replace(prefix + "en-tts", ""), 'en');
+                }
+
+                if (data.chat.includes(prefix + "de-tts")) { // 독어
+                    await ttsCommand(channel, data.chat.replace(prefix + "de-tts", ""), 'de');
+                }
+
+                if (data.chat.includes(prefix + "jp-tts")) { // 일본어
+                    await ttsCommand(channel, data.chat.replace(prefix + "jp-tts", ""), 'ja');
+                }
+
+                if (data.chat.includes(prefix + "zh-tts")) { // 중국어
+                    await ttsCommand(channel, data.chat.replace(prefix + "zh-tts", ""), 'zh');
+                }
+
+                if (data.chat.includes(prefix + "ru-tts")) { // 노어
+                    await ttsCommand(channel, data.chat.replace(prefix + "ru-tts", ""), 'ru');
                 }
 
                 //channel.sendChat(JSON.stringify(data.getSenderInfo(channel)));
@@ -2839,7 +2923,7 @@ class Bot {
                                 linkName: "asdf",
                                 description: "room : asdf",
                                 canSearchLink: true,
-                                maxUserLimit: 1000,
+                                maxUserLimit: 100,
                                 clientProfile: { type: 1 },
                             }).then((x) => {
                                 if (x.result) {
@@ -4604,7 +4688,7 @@ class Bot {
             "\n[------------------패치노트------------------]" +
             "\n|  1.  노드카카오 버전 패치" +
             "\n|  2.  전광판 명령어 추가 " +
-            "\n" +
+            "\n|  3.  tts 명령어 추가" +
             "\n[------------------패치예정------------------]" +
             "\n|  1.  다중 키워드 추가" +
             "\n|  2.  지하철/버스 도착시간 확인기능 추가" +
@@ -4671,6 +4755,8 @@ class Bot {
             "\n|  ≫ 유튜브 음원을 동영상으로 보내줍니다." +
             "\n|  " + prefix + "전광판 <상행행선지>%<출발역>%<0=도착,1=출발>%<하행행선지>%<출발역>%<0=도착,1=출발> ✅🔳🔲" + // 용산%인천%출발%인천%용산%접근
             "\n|  ≫ 한국철도공사 행선지 전광판을 흉내냅니다." +
+            "\n|  " + prefix + "tts-help" +
+            "\n|  ≫ tts 명령어 도움말을 보여줍니다." +
             "\n[------------------관리기능------------------]" +
             "\n|  ■■■■ 특수관리기능 ■■■■" +
             "\n|  " + prefix + "자동등록 ✅🔳🔲" +
@@ -5565,6 +5651,42 @@ async function LED(upWhereInfo, downWhereInfo, upStnInfo, downStnInfo, upStatInf
     return LEDupload;
 } 
 
+function userPerms(_kakaoChannel, _userid, _perm) {
+    //CLIENT.OpenLinkManager.setOpenMemberType(_kakaoChannel, _userid, null);
+    switch(_perm) {
+        case 2: // 평민
+            CLIENT.OpenLinkManager.setOpenMemberType(_kakaoChannel, _userid, 2);
+            break;
+        case 4: // 부방
+            CLIENT.OpenLinkManager.setOpenMemberType(_kakaoChannel, _userid, 4);
+            break;
+        case 8: // 봇(?)
+            CLIENT.OpenLinkManager.setOpenMemberType(_kakaoChannel, _userid, 8);
+            break;
+        default:
+            _kakaoChannel.sendChat("권한이 잘못되었습니다.");
+            break;
+    }
+    return;
+}
+
+async function ttsCommand(_kakaoChannel, text, langCode) {
+    if (text > 200) {
+        _kakaoChannel.sendChat("200자를 초과할수 없습니다.");
+        return;
+    }
+    var data = Buffer.form(await googleTTS.getAudioBase64(text, { lang }), 'base64');
+    var res = await $AttachmentApi.upload($KnownChatType.FILE, 'tts.mp3', data);
+    if (!res.success) {
+        _kakaoChannel.sendChat(`업로드중 오류가 발생했습니다. status: ${res.status}`);
+    }
+    await _kakaoChannel.sendChat(
+        new $ChatBuilder()
+            .attachment(res.result)
+            .attachment({ d: 10 })
+            .build($KnownChatType.AUDIO)
+    );
+}
 
 async function start() {
     console.clear();

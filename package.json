@@ -29,6 +29,7 @@
     "cheerio": "^1.0.0-rc.12",
     "discord-webhook-node": "^1.1.8",
     "express": "^4.18.1",
+    "google-tts-api": "^2.0.2",
     "http": "^0.0.1-security",
     "ip": "^1.1.8",
     "ipinfo": "^1.5.1",
