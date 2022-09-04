@@ -5684,10 +5684,10 @@ async function ttsCommand(_kakaoChannel, text, langCode) {
         _kakaoChannel.sendChat(`업로드중 오류가 발생했습니다. status: ${res.status}`);
     }
     await _kakaoChannel.sendChat(
-        new $ChatBuilder()
+        new node_kakao.ChatBuilder()
             .attachment(res.result)
             .attachment({ d: 10 })
-            .build($KnownChatType.AUDIO)
+            .build(node_kakao.KnownChatType.AUDIO)
     );
 }
 
