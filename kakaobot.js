@@ -5678,7 +5678,7 @@ async function ttsCommand(_kakaoChannel, text, langCode) {
         _kakaoChannel.sendChat("200자를 초과할수 없습니다.");
         return;
     }
-    var data = readableToBuffer(await googleTTS.getAudioBase64(text, { langCode }));
+    var data = Buffer.from(await googleTTS.getAudioBase64(text, { langCode }), 'base64');
     var res = await $AttachmentApi.upload($KnownChatType.FILE, 'tts.mp3', data);
     if (!res.success) {
         _kakaoChannel.sendChat(`업로드중 오류가 발생했습니다. status: ${res.status}`);
