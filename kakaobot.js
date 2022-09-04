@@ -1663,10 +1663,10 @@ class Bot {
                                 if (reply.src_logId !== undefined) {
                                     if (reply.src_type !== undefined) {
                                         switch (wut) {
-                                            case 1: // 방장
+                                            case "1": // 방장
                                                 channel.sendChat("허용되지 않은 권한입니다.");
                                                 break;
-                                            case 2: // 평민
+                                            case "2": // 평민
                                                 if (botInfo.perm != 4 && botInfo.perm != 1) {
                                                     channel.sendChat("권한이 부족합니다.");
                                                     break;
@@ -1674,7 +1674,7 @@ class Bot {
                                                     userPerms(channel, reply.src_userId, 2);
                                                     break;
                                                 }
-                                            case 4: // 부방
+                                            case "4": // 부방
                                                 if (botInfo.perm != 1) {
                                                     channel.sendChat("봇의 권한이 부족합니다.");
                                                     break;
@@ -1682,13 +1682,14 @@ class Bot {
                                                     userPerms(channel, reply.src_userId, 4);
                                                     break;
                                                 }
-                                            case 8: // 봇
+                                            case "8": // 봇
                                                 channel.sendChat("봇을 봇으로 지정할수는 있지만 지정하기 싫습니다.");
                                                 break;
                                             default: //ㅁ?ㄹ
                                                 channel.sendChat("올바른 권한을 입력해주세요.\n2 -> 평민\n4 -> 부방");
                                                 break;
                                         }
+                                        //if (wut == 4)
                                     }
                                 }
                             } else {
