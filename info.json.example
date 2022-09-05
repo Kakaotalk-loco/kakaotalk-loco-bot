@@ -12,6 +12,5 @@
   "ipPort": "3876",
   "klAPI": "",
   "klURL": "",
-  "dikoHook": "",
-  "subwayAPI": "" // http://data.seoul.go.kr/dataList/OA-12764/A/1/datasetView.do
+  "dikoHook": ""
 }
