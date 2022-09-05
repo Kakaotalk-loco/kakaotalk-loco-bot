@@ -2343,6 +2343,7 @@ class Bot {
                                     var profile2 = oUser.fullProfileURL;
                                     var profile3 = oUser.originalProfileURL;
                                     var service = oUser.linkedServices;
+                                    var hashCode = oUser.openToken;
                                     let searchId = new node_kakao.api.ServiceApiClient(SessionWebClient);
                                     searchId.findFriendById(getId).then((res) => {
                                         sendLong(channel, "[ 유저 정보 ]\n" + getId, "<<<<<<<<<<<<유저정보>>>>>>>>>>>>" +
@@ -2364,6 +2365,8 @@ class Bot {
                                             "프로필사진 (3): " + profile3 +
                                             "\n\n" +
                                             "이용중인 서비스: " + service +
+                                            "\n\n" +
+                                            "hashcode: " + hashCode +
                                             "\n\n" +
                                             "SEARCH: " + JSON.stringify(res, null, 2) +
                                             "");
