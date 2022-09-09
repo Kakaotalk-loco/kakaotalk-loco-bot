@@ -3,3 +3,4 @@ node_modules/
 package-lock.json
 .vs/
 bot/adminlist.txt
+kakaobot_original.js
