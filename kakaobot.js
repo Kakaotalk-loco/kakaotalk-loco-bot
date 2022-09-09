@@ -5721,14 +5721,15 @@ async function start() {
         '\n  ##---ㄴ1.DefaultBot--------------------------------------------##',
         '\n  ##---ㄴ2.MultiBot----------------------------------------------##',
         '\n  ##---ㄴ3.RandomUUID--------------------------------------------##',
-        '\n  ##---ㄴ4.Exit--------------------------------------------------##',
+        '\n  ##---ㄴ4.RandomTabletUUID--------------------------------------##',
+        '\n  ##---ㄴ5.Exit--------------------------------------------------##',
         '\n  #################################################################',
         '\n');
     var getMenu = readline.createInterface({
         input: process.stdin,
         output: process.stdout
     });
-    var menu = await new Promise(resolve => getMenu.question("   >> (1/2/3/4): ", resolve));
+    var menu = await new Promise(resolve => getMenu.question("   >> (1/2/3/4/5): ", resolve));
     getMenu.close();
     if (menu == "1") {
         let botClass = new Bot();
@@ -5768,6 +5769,17 @@ async function start() {
             console.log(crypto.default.randomBytes(64).toString('base64'));
         };
     } else if (menu == "4") {
+    var getAmount = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+        var menu = await new Promise(resolve => getAmount.question("   >> 테블릿UUID개수: ", resolve));
+        getAmount.close();
+        menu *= 1;
+        for (var i = 0; i < menu; i++) {
+            console.log(node_kakao.util.randomAndroidSubDeviceUUID());
+    };
+    } else if (menu == "5") {
         process.exit();
     } else {
         start();
