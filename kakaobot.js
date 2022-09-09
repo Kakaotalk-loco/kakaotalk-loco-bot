@@ -83,10 +83,13 @@ let editConfig = {
     locoBookingPort: 443,
     // eslint-disable-next-line max-len
     locoPEMPublicKey: `-----BEGIN PUBLIC KEY-----\nMIIBIDANBgkqhkiG9w0BAQEFAAOCAQ0AMIIBCAKCAQEApElgRBx+g7sniYFW7LE8ivrwXShKTRFV8lXNItMXbN5QSC8vJ/cTSOTS619Xv5Zx7xXJIk4EKxtWesEGbgZpEUP2xQ+IeH9oz0JxayEMvvD1nVNAWgpWE4pociEoArsK7qY3YwXb1CiDHo9hojLv7djbo3cwXvlyMh4TUrX2RjCZPlVJxk/LVjzcl9ohJLkl3eoSrf0AE4kQ9mk3+raEhq5Dv+IDxKYX+fIytUWKmrQJusjtre9oVUX5sBOYZ0dzez/XapusEhUWImmB6mciVXfRXQ8IK4IH6vfNyxMSOTfLEhRYN2SMLzplAYFiMV536tLS3VmG5GJRdkpDubqPeQIBAw==\n-----END PUBLIC KEY-----`,
-    agent: 'win32',
-    version: '3.4.2',
-    appVersion: '3.4.2.3187',
-    osVersion: '10.0',
+    //agent: 'win32',
+    agent: 'android',
+    //version: '3.4.2',
+    //appVersion: '3.4.2.3187',
+    version: '9.9.3',
+    appVersion: '9.9.3',
+    //osVersion: '10.0',
     // 2 == sub, 1 == main
     deviceType: 2,
     // 0 == wired(WIFI), 3 == cellular
@@ -96,7 +99,7 @@ let editConfig = {
     countryIso: 'KR',
     language: 'ko',
     subDevice: true,
-    deviceModel: '',
+    deviceModel: 'SM-T870',
     loginTokenSeedList: ['PITT', 'INORAN'],
 };
 
@@ -4356,7 +4359,7 @@ class Bot {
 
         async function login() {
             await importAdmin();
-            var api = await $AuthApiClient.create(ACC_NAME, ACC_UUID);
+            var api = await $AuthApiClient.create(ACC_NAME, ACC_UUID, node_kakao.api.xvc.AndroidSubXVCProvider);
             var form = {
                 email: ACC_EMAIL,
                 password: ACC_PASSWORD,
