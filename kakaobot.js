@@ -134,9 +134,9 @@ class Bot {
         let gggg_ID = "";
         let gggg_P_ID = "";
         let gggg_L_RES = "";
-        let ver = "10.0.6";
+        let ver = "10.0.7";
         let kakaoVer = "4.5.1";
-        let lastUpdate = "2022.09.04";
+        let lastUpdate = "2022.09.09";
         const ACC_EMAIL = _ACCOUNT.split(' ')[0];
         const ACC_PASSWORD = _ACCOUNT.split(' ')[1];
         const ACC_UUID = _ACCOUNT.split(' ')[2];
