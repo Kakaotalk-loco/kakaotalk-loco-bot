@@ -4702,7 +4702,7 @@ class Bot {
             "\n|  봇 기반: node-kakao v" + kakaoVer +
             "\n|  마지막 패치날짜: " + lastUpdate +
             "\n|  봇 버전: " + ver +
-            "\n|  봇 리포지터리: https://github.com/Kakaotalk-loco/kakaotalk-loco-bot-example" +
+            "\n|  봇 리포지터리: https://github.com/Kakaotalk-loco/kakaotalk-loco-bot" +
             "\n" +
             "\n[------------------패치노트------------------]" +
             "\n|  1.  노드카카오 버전 패치" +
