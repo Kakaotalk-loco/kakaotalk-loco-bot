@@ -3392,41 +3392,41 @@ class Bot {
                 };
                 
                 if (data.text == prefix + "아yee피") {
-                    var iyeep = new $ChatBuilder()
-                            .append(new $AttachmentContent({ 
-                                "P": { 
-                                    "TP": "feed", 
-                                    "ME": "느그 아이피다", 
-                                    "SID": "sharp", 
-                                    "DID": "http://api.kakaolink.o-r.kr/ip", 
-                                    "VA": "8.6.5", 
-                                    "VI": "8.6.5", 
-                                    "VW": "3.0.8", 
-                                    "VM": "2.6.9", 
-                                    "FW": true, 
-                                    "A": { 
-                                        "version": 1, 
-                                        "code": "c84J10GGmLvhY5TeW4rM6KMUChSS0jq45NeN3i+cqYY=", 
-                                        "createdAt": 1662792428307 
-                                    }, 
-                                    "RF": "chat_ln" 
-                                }, 
-                                "C": { 
-                                    "THC": 1, 
-                                    "THL": [
-                                        { 
-                                            "TH": { 
-                                                "THU": "http://api.kakaolink.o-r.kr/ip", 
-                                                "W": 600, 
-                                                "H": 500, 
-                                                "LI": false 
-                                            } 
+                    channel.sendChat(
+                        new $ChatBuilder().text("당신의 ip").append(new $AttachmentContent({
+                            "P": {
+                                "TP": "feed",
+                                "ME": "느그 아이피다",
+                                "SID": "sharp",
+                                "DID": "http://api.kakaolink.o-r.kr/ip",
+                                "VA": "8.6.5",
+                                "VI": "8.6.5",
+                                "VW": "3.0.8",
+                                "VM": "2.6.9",
+                                "FW": true,
+                                "A": {
+                                    "version": 1,
+                                    "code": "c84J10GGmLvhY5TeW4rM6KMUChSS0jq45NeN3i+cqYY=",
+                                    "createdAt": 1662792428307
+                                },
+                                "RF": "chat_ln"
+                            },
+                            "C": {
+                                "THC": 1,
+                                "THL": [
+                                    {
+                                        "TH": {
+                                            "THU": "http://api.kakaolink.o-r.kr/ip",
+                                            "W": 600,
+                                            "H": 500,
+                                            "LI": false
                                         }
-                                    ] 
-                                } 
-                            }
-                            ).build(2));
-                            channel.sendChat(iyeep);
+                                    }
+                                ]
+                            } 
+                        })).build(22)
+                    );
+                            
                 }
                 /*if (data.text == "!test") {
                     /**
