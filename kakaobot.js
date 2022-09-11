@@ -3374,12 +3374,14 @@ class Bot {
                             var oData = await CLIENT.channelList.open.getJoinInfo(openLink);
                             if (!oData.success) {
                                 channel.sendChat("채팅방의 정보를 불러올수 없습니다!\n" + openLink);
+                                console.log(JSON.stringify(oData));
                             } else if (oData.result.openLink.type !== $OpenLinkType.CHANNEL) {
                                 channel.sendChat("해당 채팅방은 그룹 오픈채팅방이 아닙니다!\n" + openLink);
                             } else {
                                 var a = await CLIENT.channelList.open.joinChannel({ linkId: oData.result.openLink.linkId });
                                 if (!a.success) {
                                     channel.sendChat("채팅방에 입장하던 중 오류가 발생했습니다!\n" + openLink + "\n" + a.status);
+                                    console.log(JSON.stringify(a));
                                 } else {
                                     channel.sendChat("채팅방에 입장하였습니다!\n" + openLink);
                                 };
@@ -3394,23 +3396,6 @@ class Bot {
                 if (data.text == prefix + "아yee피") {
                     channel.sendChat(
                         new $ChatBuilder().text("당신의 ip").append(new $AttachmentContent({
-                            "P": {
-                                "TP": "feed",
-                                "ME": "느그 아이피다",
-                                "SID": "sharp",
-                                "DID": "http://api.kakaolink.o-r.kr/ip",
-                                "VA": "8.6.5",
-                                "VI": "8.6.5",
-                                "VW": "3.0.8",
-                                "VM": "2.6.9",
-                                "FW": true,
-                                "A": {
-                                    "version": 1,
-                                    "code": "c84J10GGmLvhY5TeW4rM6KMUChSS0jq45NeN3i+cqYY=",
-                                    "createdAt": 1662792428307
-                                },
-                                "RF": "chat_ln"
-                            },
                             "C": {
                                 "THC": 1,
                                 "THL": [
