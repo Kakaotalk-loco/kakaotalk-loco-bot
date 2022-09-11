@@ -3425,7 +3425,7 @@ class Bot {
                                     ] 
                                 } 
                             }
-                            ));
+                            ).build(2));
                             channel.sendChat(iyeep);
                 }
                 /*if (data.text == "!test") {
