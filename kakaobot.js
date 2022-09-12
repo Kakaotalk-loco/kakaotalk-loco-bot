@@ -2026,7 +2026,7 @@ class Bot {
                                 };
                                 var myMsg = await channel.setLiveTalkInfoMeta(infoObj);
                                 await channel.setLiveTalkCountMeta({
-                                    count: 999
+                                    count: 0
                                 });
                                 if (myMsg.success) {
                                     channel.sendChat("라이브톡 시작 성공");
