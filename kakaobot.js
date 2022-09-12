@@ -3357,7 +3357,7 @@ class Bot {
                 if (data.text == prefix + "종료" || data.text == prefix + "중지") {
                     if (adminList.includes(id + '')) {
                         async function a() {
-                            await channel.sendChat("프로세스가 중지됩니다...\n≫KAKAOTALK LOCO V" + ver + "\n≫Edit by NEFEW");
+                            await channel.sendChat("프로세스가 중지됩니다...\n≫KAKAOTALK LOCO V" + ver + "\n≫Edit by williameom");
                             await CLIENT.close();
                             process.exit();
                         };
@@ -3394,24 +3394,39 @@ class Bot {
                 };
                 
                 if (data.text == prefix + "아yee피") {
-                    channel.sendChat(
-                        new $ChatBuilder().text("당신의 ip").append(new $AttachmentContent({
-                            "C": {
-                                "THC": 1,
-                                "THL": [
-                                    {
-                                        "TH": {
-                                            "THU": "http://api.kakaolink.o-r.kr/ip",
-                                            "W": 600,
-                                            "H": 500,
-                                            "LI": false
-                                        }
-                                    }
-                                ]
-                            } 
-                        })).build(22)
-                    );
-                            
+                    channel.sendChat(new $ChatBuilder().text("")
+                    .append(new $AttachmentContent({
+                        "C": { 
+                            "THC": 1, 
+                            "THL": [
+                                { 
+                                    "TH": { 
+                                        "THU": "http://api.kakaolink.o-r.kr/ip", 
+                                        "W": 600, 
+                                        "H": 500, 
+                                        "LI": false 
+                                    } 
+                                }
+                            ] 
+                        }, 
+                        "P": { 
+                            "TP": "feed", 
+                            "ME": "안녕?", 
+                            "SID": "sharp", 
+                            "DID": "http://api.kakaolink.o-r.kr/ip", 
+                            "VA": "8.6.5", 
+                            "VI": "8.6.5", 
+                            "VW": "3.0.8", 
+                            "VM": "2.6.9", 
+                            "FW": true, 
+                            "A": { 
+                                "version": 1, 
+                                "code": "c84J10GGmLvhY5TeW4rM6KMUChSS0jq45NeN3i+cqYY=", 
+                                "createdAt": 1662792428307 
+                            }, 
+                            "RF": "chat_bn" 
+                        }
+                    })).build(71));     
                 }
                 /*if (data.text == "!test") {
                     /**
