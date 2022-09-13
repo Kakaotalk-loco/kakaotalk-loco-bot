@@ -4508,8 +4508,8 @@ class Bot {
 
         async function sendLong(_kakaoChannel, text1, text2) {
             try {
-                var r = await $AttachmentApi.upload(1, "long.txt", text2);
-                _kakaoChannel.sendChat(new $ChatBuilder().text(text1).append(new $AttachmentContent(r.result)).build(1));
+                var r = await $AttachmentApi.upload(18, "long.txt", text2);
+                await _kakaoChannel.sendChat(new $ChatBuilder().text(text1).append(new $AttachmentContent(r.result)).build(1));
             } catch (e) {
                 _kakaoChannel.sendChat(e);
             };
